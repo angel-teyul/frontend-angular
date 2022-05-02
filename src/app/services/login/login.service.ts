@@ -8,10 +8,16 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class LoginService {
+  url = 'http://localhost:3000/login';
 
   constructor(public httpClient: HttpClient) {}
 
   getLuhn(luhn: any): Observable<any> {
     return this.httpClient.get<any>(environment.END_POINTS.GET_LUHN, {params: {luhn}});
+  }
+
+  loginData(data: any) {
+    console.log('data', data)
+    return this.httpClient.post(this.url, data);
   }
 }
